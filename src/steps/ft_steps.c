@@ -5,10 +5,37 @@ int	ft_step_one(t_stack **stack_a, t_stack **stack_b)
 	ft_init_index(stack_a);
 	if (ft_isordered((*stack_a)))
 		return (0);
-	(ft_push_b(stack_a, stack_b), ft_push_b(stack_a, stack_b));
-
+	if (ft_stack_size((*stack_a)) > 3)
+		(ft_push_b(stack_a, stack_b), ft_push_b(stack_a, stack_b));
+	else
+	{
+		ft_sort_three(stack_a);
+		return (0);
+	}
 	return (1);
 }
+/*
+int	ft_step_two(t_stack **a, t_stack **b)
+{
+	t_stack	*node_a = *a;
+	t_stack	*node_max = ft_max_value(*b);
+	t_stack	*node_min = ft_min_value(*b);
+	t_stack	*node_i = ft_immediate_predecessor(node_a, *b);
+
+	while (node_a)
+	{
+		ft_set_moves_and_costs(node_a, node_a->pos_a, node_a->size);
+		if (node_a->value > node_max->value || node_a->value < node_min->value)
+			ft_set_moves_and_costs(node_max, node_max->pos_a, (*b)->size);
+		else if (node_a->value < node_max->value && node_a->value > node_min->value)
+			ft_set_moves_and_costs(node_i, node_i->pos_a, (*b)->size);
+		node_a->move_b = (node_a->value > node_max->value || node_a->value < node_min->value) ? node_max->move_a : node_i->move_b;
+		node_a->cost_b = (node_a->value > node_max->value || node_a->value < node_min->value) ? node_max->cost_b : node_i->cost_b;
+		node_a = node_a->next;
+	}
+	return (1);
+}*/
+
 
 int	ft_step_two(t_stack **a, t_stack **b)
 {
@@ -20,7 +47,7 @@ int	ft_step_two(t_stack **a, t_stack **b)
 	
 	node_a = *a;
 	stack_b = *b;
-	node_i = ft_immediate_predecessor(node_a, stack_b);
+	node_i = ft_immediate_predecessor_down(node_a, stack_b);
 	node_max = ft_max_value(stack_b);
 	node_min = ft_min_value(stack_b);
 	while (node_a)
@@ -36,7 +63,6 @@ int	ft_step_two(t_stack **a, t_stack **b)
 			node_a->move_a = "reverse";
 			node_a->cost_a = node_a->size - node_a->pos_a;
 		}
-		//AQUI MIRAR COSAS CON GABRIEL
 		if (node_a->value > node_max->value || node_a ->value < node_min->value)
 		{
 			if (node_max->pos_a <= (stack_b->size / 2))
@@ -81,7 +107,6 @@ int	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*node_a;
 	int		min;
 
-	//coger el de menor coste total
 	node_a = ft_min_cost((*stack_a));
 	min = ft_min(node_a->cost_a, node_a->cost_b);
 	if (!ft_strncmp(node_a->move_a, node_a->move_b, ft_strlen(node_a->move_b)))
@@ -118,4 +143,48 @@ int	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 	}
 	ft_push_b(stack_a, stack_b);
 	return (1);
+}
+
+void	ft_step_four(t_stack **stack_b)
+{
+	while (ft_max_value((*stack_b))->pos_a != 0)
+	{
+		if (ft_max_value((*stack_b))->pos_a <= ft_stack_size((*stack_b)) / 2)
+			ft_rotate_b(stack_b);
+		else
+			ft_reverse_b(stack_b);
+	}
+}
+
+void	ft_step_five(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*node_i;
+	t_stack	*node_a;
+
+	while (ft_stack_size(node_a))
+	{
+		node_a = (*stack_b);
+		node_i = ft_immediate_predecessor_up(node_a, (*stack_a));
+		ft_print_stack(node_i);
+		while (node_i->pos_a != 0)
+		{
+			ft_print_stack(node_i);
+			if (node_i->pos_a <= ft_stack_size((*stack_a)) / 2)
+				ft_rotate_a(stack_a);
+			else
+				ft_reverse_a(stack_a);
+		}
+		ft_push_a(stack_a, stack_b);
+	}
+}
+
+void	ft_step_six(t_stack **stack_a)
+{
+	while (ft_min_value((*stack_a))->pos_a != 0)
+	{
+		if (ft_min_value((*stack_a))->pos_a <= ft_stack_size((*stack_a)) / 2)
+			ft_rotate_a(stack_a);
+		else
+			ft_reverse_a(stack_a);
+	}
 }

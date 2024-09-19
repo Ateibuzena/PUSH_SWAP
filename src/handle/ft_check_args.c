@@ -1,26 +1,25 @@
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
-
 char	*ft_join_args(int argc, char *argv[])
 {
 	char	*join;
-	//char	*temp;
+	char	*temp;
 	int		i;
 	
 	i = 1;
-	join = argv[i];
+	join = ft_strdup(argv[i]);
 	i++;
 	while (i < argc)
 	{
-		//temp = join;
-		join = ft_strjoin((char const *)join, (char const *)argv[i]);
-		//free(temp);
+		temp = join;
+		join = ft_join((char const *)join, (char const *)argv[i]);
+		free(temp);
 		i++;
 	}
 	return (join);
 }
 
-int	ft_isduplicate(char **split, int pos_f)
+int	ft_duplicate_args(char **split, int pos_f)
 {
 	int	i;
 
@@ -49,11 +48,12 @@ char	**ft_check_args(int argc, char *argv[])
 	i = 0;
 	join = ft_join_args(argc, argv);
 	split = ft_split((char const *)join, ' ');
+	free(join);
 	while (split[i])
 	{
-		if (!ft_atoi(split[i]) || ft_isduplicate(split, i))
+		if (!ft_atoi(split[i]) || ft_duplicate_args(split, i))
 		{
-			free(split);
+			ft_free_split(split);
 			return (NULL);
 		}
 		i++;

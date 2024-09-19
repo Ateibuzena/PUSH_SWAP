@@ -44,13 +44,9 @@ void	ft_print_stack(t_stack *stack);
 //ft_checks.c
 char	**ft_one_argument(char *argv[]);
 char	**ft_check_args(int argc, char *argv[]);
-int		ft_isduplicate(char **split, int pos_f);
+int		ft_duplicate_args(char **split, int pos_f);
 char	*ft_join_args(int argc, char *argv[]);
 
-//ft_errors.c
-int	ft_argc_error(void);
-int	ft_argv_error(void);
-int	ft_argv_duplicate(void);
 
 /*MOVES*/
 
@@ -79,10 +75,17 @@ void	ft_push_b(t_stack **stack_b, t_stack **stack_a);
 
 /*STEPS*/
 
-//ft_firts_steps.c
+//ft_steps.c
 int		ft_step_one(t_stack **stack_a, t_stack **stack_b);
 int		ft_step_two(t_stack **a, t_stack **b);
 int		ft_step_three(t_stack **stack_a, t_stack **stack_b);
+void	ft_step_four(t_stack **stack_b);
+void	ft_step_five(t_stack **stack_a, t_stack **stack_b);
+void	ft_step_six(t_stack **stack_a);
+
+//ft_intermediate_steps.c
+void	ft_set_moves_and_costs(t_stack *node, int pos, int size);
+void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
 
@@ -98,6 +101,16 @@ int		ft_min(int n1, int n2);
 int		ft_max(int n1, int n2);
 
 //ft_immediate_predecessor.c
-t_stack	*ft_immediate_predecessor(t_stack *node_a, t_stack *stack_b);
+t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b);
+t_stack	*ft_immediate_predecessor_up(t_stack *node_a, t_stack *stack_a);
+
+//ft_join.c
+char	*ft_join(char const *s1, char const *s2);
+
+/*FREE*/
+
+//ft_free_split.c
+void 	ft_free_split(char **split);
+void	ft_free_stack(t_stack *head);
 
 #endif

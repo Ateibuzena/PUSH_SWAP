@@ -10,12 +10,12 @@ INCLUDES = -I$(LIBFT_DIR)
 
 SRC_DIR = ./src
 SRCS = $(SRC_DIR)/ft_arrays.c $(SRC_DIR)/ft_inits.c $(SRC_DIR)/ft_stacks.c $(SRC_DIR)/push_swap.c\
-		$(SRC_DIR)/handle/ft_errors.c $(SRC_DIR)/handle/ft_prints.c\
+		$(SRC_DIR)/handle/ft_check_args.c $(SRC_DIR)/handle/ft_prints.c\
 		$(SRC_DIR)/moves/ft_push.c $(SRC_DIR)/moves/ft_swap.c $(SRC_DIR)/moves/ft_rotate.c $(SRC_DIR)/moves/ft_reverse.c\
 		$(SRC_DIR)/utils/ft_isordered.c $(SRC_DIR)/utils/ft_min_max.c $(SRC_DIR)/utils/ft_immediate_predecessor.c\
 		$(SRC_DIR)/utils/ft_join.c\
-		$(SRC_DIR)/args/ft_check_args.c\
-		$(SRC_DIR)/steps/ft_firts_steps.c\
+		$(SRC_DIR)/steps/ft_steps.c $(SRC_DIR)/steps/ft_intermediate_steps.c\
+		$(SRC_DIR)/free/ft_free_split.c $(SRC_DIR)/free/ft_free_stack.c\
 
 OBJ_DIR = ./objs
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

@@ -8,8 +8,8 @@ int	ft_isordered(t_stack *stack)
 	sublist = stack;
 	while(sublist->next)
 	{
-		n = sublist->pos_f;
-		if (n != sublist->pos_a)
+		n = sublist->value;
+		if (n > sublist->next->value)
 			return (0);
 		sublist = sublist->next;
 	}

@@ -16,9 +16,10 @@ void	ft_init_size(t_stack **stack)
 	while (aux)
 	{
 		aux->size = i;
-		/*aux->cost_a = -1;
-		aux->cost_b = -1;
-		aux->cost_t = -1;*/
+		aux->cost_a = 0;
+		aux->cost_b = 0;
+		aux->cost_t = 0;
+		aux->move_a = "rotate";
 		aux = aux->next;
 	}
 }
