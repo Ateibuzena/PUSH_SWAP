@@ -23,12 +23,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	while (!ft_isordered(stack_a) && ft_stack_size(stack_a) > 3)
 		(ft_step_two(&stack_a, &stack_b), ft_step_three(&stack_a, &stack_b));
-	/*ft_print_stack(stack_a);
-	ft_printf("stack_b: \n");
-	ft_print_stack(stack_b);*/
 	(ft_sort_three(&stack_a), ft_step_four(&stack_b));
-	(ft_step_five(&stack_a, &stack_b), ft_printf("entraaaaaaaaaa\n"), ft_step_six(&stack_a));
-	
+	(ft_step_five(&stack_a, &stack_b), ft_step_six(&stack_a));
 	(free(stack_b), ft_free_stack(stack_a));
 	return (0);
 }

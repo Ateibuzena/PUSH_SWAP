@@ -161,14 +161,12 @@ void	ft_step_five(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*node_i;
 	t_stack	*node_a;
 
-	while (ft_stack_size(node_a))
+	while (ft_stack_size((*stack_b)))
 	{
 		node_a = (*stack_b);
 		node_i = ft_immediate_predecessor_up(node_a, (*stack_a));
-		ft_print_stack(node_i);
 		while (node_i->pos_a != 0)
 		{
-			ft_print_stack(node_i);
 			if (node_i->pos_a <= ft_stack_size((*stack_a)) / 2)
 				ft_rotate_a(stack_a);
 			else

@@ -37,18 +37,16 @@ t_stack	*ft_immediate_predecessor_up(t_stack *node_a, t_stack *stack_a)
     node = NULL;
     min_diff = 2147483647;
     aux = stack_a;
+    if (node_a->value > ft_max_value(stack_a)->value)
+        return (ft_min_value(stack_a));
     while (aux)
     {
         diff = aux->value - node_a->value;
-        ft_printf("diff: %d\n", diff);
         if (diff > 0 && diff < min_diff)
         {
             min_diff = diff;
             node = aux;
         }
-        //ft_printf("entra \n");
-        ft_printf("valor de node_i: %d\n", node->value);
-        ft_print_stack(node);
         aux = aux->next;
     }
     return (node);
