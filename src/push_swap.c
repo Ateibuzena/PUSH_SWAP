@@ -8,25 +8,12 @@ int	main(int argc, char *argv[])
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc != 2)
-	{
-		if (ft_check_arguments(argc, argv))
-		{
-			ft_init_value(&stack_a, argc, argv);
-			/*ft_printf("init_value\n");
-			ft_print_stack(stack_a);*/
-		}
-	}
-	else
-	{
-		if (ft_one_argument(argv))
-		{
-			split = ft_one_argument(argv);
-			ft_init_value(&stack_a, argc, split);
-			/*ft_printf("init_value\n");
-			ft_print_stack(stack_a);*/
-		}
-	}
+	if (argc == 1)
+		return (0);
+	split = ft_check_args(argc, argv);
+	if (!split)
+		return (ft_printf("Error\n"));
+	ft_init_value(&stack_a, split);
 	if (!stack_a)
 		return (0);
 	if (!ft_step_one(&stack_a, &stack_b))

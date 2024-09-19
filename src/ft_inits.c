@@ -48,32 +48,18 @@ void ft_init_index(t_stack **stack)
 	free(array);
 }
 
-void	ft_init_value(t_stack **stack, int argc, char **argv)
+void	ft_init_value(t_stack **stack, char **argv)
 {
 	int			i;
 	t_stack		*node;
 
-	if (ft_atoi(argv[0]))
+	i = 0;
+	while (argv[i])
 	{
-		i = 0;
-		while (argv[i])
-		{
-			node = ft_new_node(ft_atoi(argv[i]));
-			ft_add_back(stack, node);
-			node->pos_a = i;
-			i++;
-		}	
-	}
-	else
-	{
-		i = 1;
-		while (i < argc)
-		{
-			node = ft_new_node(ft_atoi(argv[i]));
-			ft_add_back(stack, node);
-			node->pos_a = i - 1;
-			i++;
-		}
+		node = ft_new_node(ft_atoi(argv[i]));
+		ft_add_back(stack, node);
+		node->pos_a = i;
+		i++;
 	}
 	ft_init_size(stack);
 }

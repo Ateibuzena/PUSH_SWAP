@@ -21,7 +21,7 @@ typedef struct s_stack
 } t_stack;
 
 //ft_inits.c
-void	ft_init_value(t_stack **stack, int argc, char **argv);
+void	ft_init_value(t_stack **stack, char **argv);
 void	ft_init_index(t_stack **stack);
 void	ft_init_size(t_stack **stack);
 
@@ -43,7 +43,9 @@ void	ft_print_stack(t_stack *stack);
 
 //ft_checks.c
 char	**ft_one_argument(char *argv[]);
-int		ft_check_arguments(int argc, char *argv[]);
+char	**ft_check_args(int argc, char *argv[]);
+int		ft_isduplicate(char **split, int pos_f);
+char	*ft_join_args(int argc, char *argv[]);
 
 //ft_errors.c
 int	ft_argc_error(void);
