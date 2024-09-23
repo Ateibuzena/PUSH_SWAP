@@ -51,7 +51,7 @@ char	**ft_check_args(int argc, char *argv[])
 	free(join);
 	while (split[i])
 	{
-		if (!ft_atoi(split[i]) || ft_duplicate_args(split, i))
+		if ((!ft_isdigit(split[i][0]) && !ft_atoi(split[i])) || ft_duplicate_args(split, i))
 		{
 			ft_free_split(split);
 			return (NULL);

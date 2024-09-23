@@ -25,18 +25,18 @@ void	ft_swap(t_stack **stack)
 void	ft_swap_a(t_stack **stack_a)
 {
 	ft_swap(stack_a);
-	ft_printf("swap_a\n");
+	ft_printf("sa\n");
 }
 
 void	ft_swap_b(t_stack **stack_b)
 {
 	ft_swap(stack_b);
-	ft_printf("swap_b\n");
+	ft_printf("sb\n");
 }
 
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	ft_printf("swap_ab\n");
+	ft_printf("ss\n");
 }

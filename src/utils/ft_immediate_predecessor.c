@@ -15,7 +15,7 @@ t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b)
     while (aux)
     {
         diff = node_a->value - aux->value;
-        if (diff > 0 && diff < min_diff)
+        if (diff < min_diff)
         {
             min_diff = diff;
             node = aux;

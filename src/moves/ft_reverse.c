@@ -33,18 +33,18 @@ void	ft_reverse(t_stack **stack)
 void	ft_reverse_a(t_stack **stack_a)
 {
 	ft_reverse(stack_a);
-	ft_printf("reverse_a\n");
+	ft_printf("rra\n");
 }
 
 void	ft_reverse_b(t_stack **stack_b)
 {
 	ft_reverse(stack_b);
-	ft_printf("reverse_b\n");
+	ft_printf("rrb\n");
 }
 
 void	ft_reverse_ab(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_reverse(stack_a);
 	ft_reverse(stack_b);
-	ft_printf("reverse_ab\n");
+	ft_printf("rrr\n");
 }

@@ -67,6 +67,7 @@ int	ft_step_two(t_stack **a, t_stack **b)
 		{
 			if (node_max->pos_a <= (stack_b->size / 2))
 			{
+
 				node_max->move_a = "rotate";
 				node_a->move_b = "rotate";
 				node_max->cost_b = node_max->pos_a;
@@ -74,6 +75,7 @@ int	ft_step_two(t_stack **a, t_stack **b)
 			}
 			else
 			{
+
 				node_max->move_a = "reverse";
 				node_a->move_b = "reverse";
 				node_max->cost_b = stack_b->size - node_max->pos_a;
@@ -84,6 +86,7 @@ int	ft_step_two(t_stack **a, t_stack **b)
 		{
 			if (node_i->pos_a <= (stack_b->size / 2))
 			{
+
 				node_i->move_b = "rotate";
 				node_a->move_b = "rotate";
 				node_i->cost_b = node_i->pos_a;
@@ -91,6 +94,7 @@ int	ft_step_two(t_stack **a, t_stack **b)
 			}
 			else
 			{
+
 				node_i->move_b = "reverse";
 				node_a->move_b = "reverse";
 				node_i->cost_b = stack_b->size - node_i->pos_a;
@@ -109,16 +113,16 @@ int	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 
 	node_a = ft_min_cost((*stack_a));
 	min = ft_min(node_a->cost_a, node_a->cost_b);
-	if (!ft_strncmp(node_a->move_a, node_a->move_b, ft_strlen(node_a->move_b)))
+	if (node_a->move_a && node_a->move_b && !ft_strncmp(node_a->move_a, node_a->move_b, ft_strlen(node_a->move_b)))
 	{
 		node_a->cost_t = ft_max(node_a->cost_a, node_a->cost_b);
 		node_a->cost_a -= min;
 		node_a->cost_b -= min;
 		while (min)
 		{
-			if (!ft_strncmp(node_a->move_a, "reverse", ft_strlen(node_a->move_a)))
+			if (node_a->move_a && !ft_strncmp(node_a->move_a, "reverse", ft_strlen(node_a->move_a)))
 				ft_reverse_ab(stack_a, stack_b);
-			if (!ft_strncmp(node_a->move_a, "rotate", ft_strlen(node_a->move_a)))
+			if (node_a->move_a && !ft_strncmp(node_a->move_a, "rotate", ft_strlen(node_a->move_a)))
 				ft_rotate_ab(stack_a, stack_b);
 			min--;
 		}
@@ -127,17 +131,17 @@ int	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 		node_a->cost_t = node_a->cost_a + node_a->cost_b;
 	while (node_a->cost_a)
 	{
-		if (!ft_strncmp(node_a->move_a, "reverse", ft_strlen(node_a->move_a)))
+		if (node_a->move_a && !ft_strncmp(node_a->move_a, "reverse", ft_strlen(node_a->move_a)))
 			ft_reverse_a(stack_a);
-		if (!ft_strncmp(node_a->move_a, "rotate", ft_strlen(node_a->move_a)))
+		if (node_a->move_a && !ft_strncmp(node_a->move_a, "rotate", ft_strlen(node_a->move_a)))
 			ft_rotate_a(stack_a);
 		node_a->cost_a -= 1;
 	}
 	while (node_a->cost_b)
 	{
-		if (!ft_strncmp(node_a->move_b, "reverse", ft_strlen(node_a->move_b)))
+		if (node_a->move_b && !ft_strncmp(node_a->move_b, "reverse", ft_strlen(node_a->move_b)))
 			ft_reverse_b(stack_b);
-		if (!ft_strncmp(node_a->move_b, "rotate", ft_strlen(node_a->move_b)))
+		if (node_a->move_b && !ft_strncmp(node_a->move_b, "rotate", ft_strlen(node_a->move_b)))
 			ft_rotate_b(stack_b);
 		node_a->cost_b -= 1;
 	}

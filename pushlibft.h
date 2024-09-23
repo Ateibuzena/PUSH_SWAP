@@ -31,23 +31,6 @@ void	ft_add_back(t_stack **stack, t_stack *node);
 void	ft_add_front(t_stack **stack, t_stack *node);
 int		ft_stack_size(t_stack *stack);
 
-//ft_arrays.c
-int		*ft_sort_array(t_stack *stack, int size, int *array);
-
-
-/*HANDLE*/
-
-//ft_prints.c
-void	ft_print_array(int	*array, int size);
-void	ft_print_stack(t_stack *stack);
-
-//ft_checks.c
-char	**ft_one_argument(char *argv[]);
-char	**ft_check_args(int argc, char *argv[]);
-int		ft_duplicate_args(char **split, int pos_f);
-char	*ft_join_args(int argc, char *argv[]);
-
-
 /*MOVES*/
 
 //ft_reverse.c
@@ -89,6 +72,18 @@ void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
 
+//ft_sort_arrays.c
+int		*ft_sort_array(t_stack *stack, int size, int *array);
+
+//ft_checks_args.c
+char	**ft_check_args(int argc, char *argv[]);
+int		ft_duplicate_args(char **split, int pos_f);
+char	*ft_join_args(int argc, char *argv[]);
+
+//ft_free.c
+void 	ft_free_split(char **split);
+void	ft_free_stack(t_stack *head);
+
 //ft_isordered.c
 int		ft_isordered(t_stack *stack);
 
@@ -107,10 +102,5 @@ t_stack	*ft_immediate_predecessor_up(t_stack *node_a, t_stack *stack_a);
 //ft_join.c
 char	*ft_join(char const *s1, char const *s2);
 
-/*FREE*/
-
-//ft_free_split.c
-void 	ft_free_split(char **split);
-void	ft_free_stack(t_stack *head);
 
 #endif

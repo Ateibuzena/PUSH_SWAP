@@ -37,11 +37,11 @@ void	ft_push(t_stack **source, t_stack **dest)
 void	ft_push_b(t_stack **source, t_stack **dest)
 {
 	ft_push(source, dest);
-	ft_printf("push_b\n");
+	ft_printf("pb\n");
 }
 
 void	ft_push_a(t_stack **source, t_stack **dest)
 {
 	ft_push(dest, source);
-	ft_printf("push_a\n");
+	ft_printf("pa\n");
 }
