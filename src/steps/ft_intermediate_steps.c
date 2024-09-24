@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_intermediate_steps.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:45:11 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 12:45:27 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 void	ft_set_moves_and_costs(t_stack *node, int pos, int size)
@@ -13,7 +25,6 @@ void	ft_set_moves_and_costs(t_stack *node, int pos, int size)
 		node->cost_a = size - pos;
 	}
 }
-
 
 void	ft_sort_three(t_stack **stack_a)
 {

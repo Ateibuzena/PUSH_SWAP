@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 13:49:03 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 13:49:14 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 int	main(int argc, char *argv[])
@@ -14,7 +26,7 @@ int	main(int argc, char *argv[])
 	if (!split)
 	{
 		ft_printf("Error\n");
-		return (0);
+		return (1);
 	}
 	(ft_init_value(&stack_a, split), ft_free_split(split));
 	if (!stack_a)

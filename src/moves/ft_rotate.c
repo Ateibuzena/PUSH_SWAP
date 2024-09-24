@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:43:59 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 12:44:17 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 void	ft_rotate(t_stack **stack)
@@ -7,10 +19,7 @@ void	ft_rotate(t_stack **stack)
 	int		i;
 
 	if (ft_stack_size(*stack) == 1)
-	{
-		//fallo tamaño stack
 		return ;
-	}
 	last = *stack;
 	init = *stack;
 	i = 0;

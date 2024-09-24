@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_args.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:45:56 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 13:45:26 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 char	*ft_join_args(int argc, char *argv[])
@@ -5,7 +17,7 @@ char	*ft_join_args(int argc, char *argv[])
 	char	*join;
 	char	*temp;
 	int		i;
-	
+
 	i = 1;
 	join = ft_strdup(argv[i]);
 	i++;
@@ -29,9 +41,9 @@ int	ft_duplicate_args(char **split, int pos_f)
 		while (i < pos_f)
 		{
 			if (!ft_strncmp(split[i],
-				split[pos_f],
-				ft_max(ft_strlen(split[i]),
-				ft_strlen(split[pos_f]))))
+					split[pos_f],
+					ft_max(ft_strlen(split[i]),
+						ft_strlen(split[pos_f]))))
 				return (1);
 			i++;
 		}
@@ -44,6 +56,7 @@ char	**ft_check_args(int argc, char *argv[])
 	char	*join;
 	char	**split;
 	int		i;
+	int		n;
 
 	i = 0;
 	join = ft_join_args(argc, argv);
@@ -51,7 +64,9 @@ char	**ft_check_args(int argc, char *argv[])
 	free(join);
 	while (split[i])
 	{
-		if ((!ft_isdigit(split[i][0]) && !ft_atoi(split[i])) || ft_duplicate_args(split, i))
+		n = ft_atoi(split[i]); //revisar numeros negativos
+		if ((!ft_isdigit(split[i][0]) && split[i][0] != '-')
+			|| (split[i][0] != '0' && !n) || ft_duplicate_args(split, i))
 		{
 			ft_free_split(split);
 			return (NULL);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_reverse.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:43:39 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 12:43:47 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 void	ft_reverse(t_stack **stack)
@@ -8,10 +20,7 @@ void	ft_reverse(t_stack **stack)
 	int		i;
 
 	if (ft_stack_size(*stack) == 1)
-	{
-		//fallo tamaño stack
 		return ;
-	}
 	i = 1;
 	init = *stack;
 	while (init->next->next)
@@ -25,7 +34,6 @@ void	ft_reverse(t_stack **stack)
 	last = prev->next;
 	prev->next = NULL;
 	last->pos_a = 0;
-	//paso importante que hace que un nodo apunte a lo que apuntaba otro
 	last->next = *stack;
 	*stack = last;
 }

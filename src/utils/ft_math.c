@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isordered.c                                     :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 12:46:11 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 12:54:06 by azubieta         ###   ########.fr       */
+/*   Created: 2024/09/24 13:41:43 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 13:41:50 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
-
-int	ft_isordered(t_stack *stack)
+int	ft_min(int n1, int n2)
 {
-	int		n;
-	t_stack	*sublist;
+	if (n1 < n2)
+		return (n1);
+	else
+		return (n2);
+}
 
-	sublist = stack;
-	while (sublist->next)
-	{
-		n = sublist->value;
-		if (n > sublist->next->value)
-			return (0);
-		sublist = sublist->next;
-	}
-	return (1);
+int	ft_max(int n1, int n2)
+{
+	if (n1 > n2)
+		return (n1);
+	else
+		return (n2);
 }

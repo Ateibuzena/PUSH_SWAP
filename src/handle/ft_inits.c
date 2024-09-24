@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_inits.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 12:41:42 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
-void	ft_init_size(t_stack **stack)
+void	ft_inits(t_stack **stack)
 {
 	t_stack	*aux;
 	int		i;
@@ -9,6 +21,7 @@ void	ft_init_size(t_stack **stack)
 	i = 0;
 	while (aux)
 	{
+		aux->pos_a = i;
 		i++;
 		aux = aux->next;
 	}
@@ -24,15 +37,15 @@ void	ft_init_size(t_stack **stack)
 	}
 }
 
-void ft_init_index(t_stack **stack)
-{	
+void	ft_init_index(t_stack **stack)
+{
 	int		*array;
 	t_stack	*aux;
 	int		i;
 
 	array = malloc((*stack)->size * sizeof(int));
 	if (!array)
-		return;
+		return ;
 	array = ft_sort_array(*stack, (*stack)->size, array);
 	aux = *stack;
 	while (aux)
@@ -62,5 +75,5 @@ void	ft_init_value(t_stack **stack, char **argv)
 		node->pos_a = i;
 		i++;
 	}
-	ft_init_size(stack);
+	ft_inits(stack);
 }

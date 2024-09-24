@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 12:44:26 by azubieta          #+#    #+#             */
+/*   Updated: 2024/09/24 12:44:34 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
 void	ft_swap(t_stack **stack)
@@ -7,10 +19,7 @@ void	ft_swap(t_stack **stack)
 	t_stack	*third;
 
 	if (ft_stack_size(*stack) == 1)
-	{
-		//fallo tamaño stack
 		return ;
-	}
 	third = *stack;
 	first = *stack;
 	second = (*stack)->next;

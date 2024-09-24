@@ -23,7 +23,7 @@ typedef struct s_stack
 //ft_inits.c
 void	ft_init_value(t_stack **stack, char **argv);
 void	ft_init_index(t_stack **stack);
-void	ft_init_size(t_stack **stack);
+void	ft_inits(t_stack **stack);
 
 //ft_stacks.c
 t_stack	*ft_new_node(int value);
@@ -72,6 +72,10 @@ void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
 
+//ft_math.c
+int		ft_min(int n1, int n2);
+int		ft_max(int n1, int n2);
+
 //ft_sort_arrays.c
 int		*ft_sort_array(t_stack *stack, int size, int *array);
 
@@ -92,8 +96,6 @@ t_stack	*ft_min_value(t_stack *stack);
 t_stack	*ft_max_value(t_stack *stack);
 t_stack	*ft_min_cost(t_stack *stack);
 t_stack	*ft_max_cost(t_stack *stack);
-int		ft_min(int n1, int n2);
-int		ft_max(int n1, int n2);
 
 //ft_immediate_predecessor.c
 t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b);
