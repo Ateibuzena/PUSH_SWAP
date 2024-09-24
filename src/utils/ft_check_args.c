@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:56 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 13:45:26 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:24:00 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_check_args(int argc, char *argv[])
 	free(join);
 	while (split[i])
 	{
-		n = ft_atoi(split[i]); //revisar numeros negativos
+		n = ft_atoi(split[i]);
 		if ((!ft_isdigit(split[i][0]) && split[i][0] != '-')
 			|| (split[i][0] != '0' && !n) || ft_duplicate_args(split, i))
 		{

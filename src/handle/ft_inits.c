@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 12:41:42 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:50:38 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,30 @@ void	ft_init_value(t_stack **stack, char **argv)
 		i++;
 	}
 	ft_inits(stack);
+}
+
+void	ft_init_cost(t_stack *n_a, t_stack *stack_b, t_stack *node_i)
+{
+	if ((n_a->pos_a) <= (n_a->size / 2))
+		ft_update_a(n_a, "r", n_a->pos_a);
+	else
+		ft_update_a(n_a, "rr", n_a->size - n_a->pos_a);
+	if (n_a->value > ft_max_value(stack_b)->value
+		|| n_a ->value < ft_min_value(stack_b)->value)
+	{
+		if (ft_max_value(stack_b)->pos_a <= (stack_b->size / 2))
+			ft_update_ab(ft_max_value(stack_b), n_a, "r",
+				ft_max_value(stack_b)->pos_a);
+		else
+			ft_update_ab(ft_max_value(stack_b), n_a, "rr",
+				stack_b->size - ft_max_value(stack_b)->pos_a);
+	}
+	else if (n_a->value < ft_max_value(stack_b)->value
+		&& n_a->value > ft_min_value(stack_b)->value)
+	{
+		if (node_i->pos_a <= (stack_b->size / 2))
+			ft_update_b(node_i, n_a, "r", node_i->pos_a);
+		else
+			ft_update_b(node_i, n_a, "rr", stack_b->size - node_i->pos_a);
+	}
 }

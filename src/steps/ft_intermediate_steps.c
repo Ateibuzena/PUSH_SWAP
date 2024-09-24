@@ -6,24 +6,69 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:11 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 12:45:27 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:15:07 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
 
-void	ft_set_moves_and_costs(t_stack *node, int pos, int size)
+void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b)
 {
-	if (pos <= size / 2)
+	t_stack	*node_a;
+	int		min;
+
+	node_a = ft_min_cost((*stack_a));
+	min = ft_min(node_a->cost_a, node_a->cost_b);
+	if (node_a->move_a && node_a->move_b && !ft_strncmp(node_a->move_a,
+			node_a->move_b, ft_strlen(node_a->move_b)))
 	{
-		node->move_a = "rotate";
-		node->cost_a = pos;
+		node_a->cost_t = ft_max(node_a->cost_a, node_a->cost_b);
+		node_a->cost_a -= min;
+		node_a->cost_b -= min;
+		while (min)
+		{
+			if (node_a->move_a && !ft_strncmp(node_a->move_a, "reverse",
+					ft_strlen(node_a->move_a)))
+				ft_reverse_ab(stack_a, stack_b);
+			if (node_a->move_a
+				&& !ft_strncmp(node_a->move_a, "rotate",
+					ft_strlen(node_a->move_a)))
+				ft_rotate_ab(stack_a, stack_b);
+			min--;
+		}
 	}
 	else
-	{
-		node->move_a = "reverse";
-		node->cost_a = size - pos;
-	}
+		node_a->cost_t = node_a->cost_a + node_a->cost_b;
+}
+
+void	ft_update_a(t_stack	*node_a, char *move, int cost)
+{
+	if (!node_a)
+		return ;
+	node_a->move_a = ft_strdup(move);
+	node_a->cost_a = cost;
+}
+
+void	ft_update_b(t_stack	*node_i, t_stack *node_a,
+								char *move, int cost)
+{
+	if (!node_i || !node_a)
+		return ;
+	node_i->move_b = ft_strdup(move);
+	node_a->move_b = ft_strdup(move);
+	node_i->cost_b = cost;
+	node_a->cost_b = cost;
+}
+
+void	ft_update_ab(t_stack *node_max, t_stack *node_a,
+								char *move, int cost)
+{
+	if (!node_max || !node_a)
+		return ;
+	node_max->move_a = ft_strdup(move);
+	node_a->move_b = ft_strdup(move);
+	node_max->cost_b = cost;
+	node_a->cost_b = cost;
 }
 
 void	ft_sort_three(t_stack **stack_a)
