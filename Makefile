@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = /home/azubieta/sgoinfre/azubieta/libft
+LIBFT_DIR = /home/azubieta/sgoinfre/azubieta/utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 
@@ -16,6 +16,7 @@ SRCS = $(SRC_DIR)/push_swap.c\
 		$(SRC_DIR)/utils/ft_join.c $(SRC_DIR)/utils/ft_free.c $(SRC_DIR)/utils/ft_sort_arrays.c $(SRC_DIR)/utils/ft_check_args.c\
 		$(SRC_DIR)/steps/ft_steps.c $(SRC_DIR)/steps/ft_intermediate_steps.c\
 		$(SRC_DIR)/utils/ft_math.c\
+		$(SRC_DIR)/handle/ft_prints.c\
 
 OBJ_DIR = ./objs
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

@@ -1,7 +1,7 @@
 #ifndef PUSHLIBFT_H
 #define PUSHLIBFT_H
 
-# include "/home/azubieta/sgoinfre/azubieta/libft/libft.h"
+# include "/home/azubieta/sgoinfre/azubieta/utils/libft/libft.h"
 
 typedef struct s_stack
 {
@@ -20,7 +20,13 @@ typedef struct s_stack
 	struct s_stack	*next;	
 } t_stack;
 
+/*HANDLE*/
+
+//ft_prints.c
+void	ft_print_stack(t_stack *stack);
+
 //ft_inits.c
+void	ft_init_cost(t_stack *n_a, t_stack *stack_b);
 void	ft_init_value(t_stack **stack, char **argv);
 void	ft_init_index(t_stack **stack);
 void	ft_inits(t_stack **stack);
@@ -60,14 +66,16 @@ void	ft_push_b(t_stack **stack_b, t_stack **stack_a);
 
 //ft_steps.c
 int		ft_step_one(t_stack **stack_a, t_stack **stack_b);
-int		ft_step_two(t_stack **a, t_stack **b);
-int		ft_step_three(t_stack **stack_a, t_stack **stack_b);
+void	ft_step_two(t_stack **a, t_stack **b);
+void	ft_step_three(t_stack **stack_a, t_stack **stack_b);
 void	ft_step_four(t_stack **stack_b);
 void	ft_step_five(t_stack **stack_a, t_stack **stack_b);
-void	ft_step_six(t_stack **stack_a);
 
 //ft_intermediate_steps.c
-void	ft_set_moves_and_costs(t_stack *node, int pos, int size);
+void	ft_update_a(t_stack	*node_a, char *move, int	cost);
+void	ft_update_b(t_stack	*node_i, t_stack *node_a, char *move, int cost);
+void	ft_update_ab(t_stack *node_max, t_stack *node_a, char *move, int cost);
+void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
@@ -104,5 +112,8 @@ t_stack	*ft_immediate_predecessor_up(t_stack *node_a, t_stack *stack_a);
 //ft_join.c
 char	*ft_join(char const *s1, char const *s2);
 
+//push_swap.c
+void	ft_final_step(t_stack **stack_a);
+int		main(int argc, char *argv[]);
 
 #endif

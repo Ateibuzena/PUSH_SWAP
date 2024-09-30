@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:44:26 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 12:44:34 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:46:01 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
 
 void	ft_swap(t_stack **stack)
 {

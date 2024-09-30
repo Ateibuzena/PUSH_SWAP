@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:49:03 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 16:36:26 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:30:49 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
 
 void	ft_final_step(t_stack **stack_a)
 {
@@ -47,7 +47,10 @@ int	main(int argc, char *argv[])
 	while (!ft_isordered(stack_a) && ft_stack_size(stack_a) > 3)
 		(ft_step_two(&stack_a, &stack_b), ft_step_three(&stack_a, &stack_b));
 	(ft_sort_three(&stack_a), ft_step_four(&stack_b));
+
+	//ft_print_stack(stack_b);
 	(ft_step_five(&stack_a, &stack_b), ft_final_step(&stack_a));
+	//ft_print_stack(stack_a);
 	(free(stack_b), ft_free_stack(stack_a));
 	return (0);
 }

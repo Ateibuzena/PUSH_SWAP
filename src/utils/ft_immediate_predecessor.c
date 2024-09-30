@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:46:06 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/24 12:53:35 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:56:13 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_intra/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
 
 t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b)
 {
@@ -27,7 +27,7 @@ t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b)
 	while (aux)
 	{
 		diff = node_a->value - aux->value;
-		if (diff < min_diff)
+		if (diff > 0 && diff < min_diff)
 		{
 			min_diff = diff;
 			node = aux;
