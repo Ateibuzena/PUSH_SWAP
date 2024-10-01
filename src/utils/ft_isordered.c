@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 int	ft_isordered(t_stack *stack)
 {

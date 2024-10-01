@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/29 19:55:23 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:22:45 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 void	ft_inits(t_stack **stack)
 {
@@ -32,7 +32,8 @@ void	ft_inits(t_stack **stack)
 		aux->cost_a = 0;
 		aux->cost_b = 0;
 		aux->cost_t = 0;
-		aux->move_a = "rotate";
+		aux->move_a = "o";
+		aux->move_b = "o";
 		aux = aux->next;
 	}
 }
@@ -84,25 +85,26 @@ void	ft_init_cost(t_stack *n_a, t_stack *stack_b)
 	
 	node_i = ft_immediate_predecessor_down(n_a, stack_b);
 	if ((n_a->pos_a) <= (n_a->size / 2))
-		ft_update_a(n_a, "r", n_a->pos_a);
+		ft_update_a(n_a, "o", n_a->pos_a);
 	else if ((n_a->pos_a) > (n_a->size / 2))
-		ft_update_a(n_a, "rr", n_a->size - n_a->pos_a);
+		ft_update_a(n_a, "e", n_a->size - n_a->pos_a);
 	if (n_a->value > ft_max_value(stack_b)->value
 		|| n_a ->value < ft_min_value(stack_b)->value)
 	{
 		if (ft_max_value(stack_b)->pos_a <= (stack_b->size / 2))
-			ft_update_ab(ft_max_value(stack_b), n_a, "r",
+			ft_update_ab(ft_max_value(stack_b), n_a, "o",
 				ft_max_value(stack_b)->pos_a);
 		else
-			ft_update_ab(ft_max_value(stack_b), n_a, "rr",
+			ft_update_ab(ft_max_value(stack_b), n_a, "e",
 				stack_b->size - ft_max_value(stack_b)->pos_a);
 	}
 	else if (n_a->value < ft_max_value(stack_b)->value
 		&& n_a->value > ft_min_value(stack_b)->value)
 	{
 		if (node_i->pos_a <= (stack_b->size / 2))
-			ft_update_b(node_i, n_a, "r", node_i->pos_a);
+			ft_update_b(node_i, n_a, "o", node_i->pos_a);
 		else
-			ft_update_b(node_i, n_a, "rr", stack_b->size - node_i->pos_a);
+			ft_update_b(node_i, n_a, "e", stack_b->size - node_i->pos_a);
 	}
+	//ft_min_cost(&n_a);
 }

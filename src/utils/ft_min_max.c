@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:46:26 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/29 20:25:22 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:39:43 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 t_stack	*ft_min_value(t_stack *stack)
 {
@@ -58,36 +58,44 @@ t_stack	*ft_max_value(t_stack *stack)
 	return (node);
 }
 
-t_stack	*ft_min_cost(t_stack *stack)
+t_stack	*ft_min_cost(t_stack **stack)
 {
 	int		min;
 	t_stack	*node;
+	t_stack *aux;
 
 	if (!stack)
 		return (NULL);
-	node = stack;
-	min = node->cost_a;
-	while (stack)
+	node = *stack;
+	aux = *stack;
+	(*stack) = (*stack)->next;
+	//ft_printf("min: %d\n", min);
+	while ((*stack))
 	{
-		if (!ft_strncmp(stack->move_a, stack->move_b, ft_strlen(stack->move_b)))
+		if ((*stack)->move_a[0] == (*stack)->move_b[0])
 		{
-			stack->cost_t = ft_max(stack->cost_a, stack->cost_b);
-			stack->cost_a -= min;
-			stack->cost_b -= min;
+			min = ft_max((*stack)->cost_a, (*stack)->cost_b);
+			(*stack)->cost_t = ft_max(node->cost_a, node->cost_b);
 		}
 		else
-			stack->cost_t = stack->cost_a + stack->cost_b;
-		if (stack->cost_a < min)
 		{
-			min = stack->cost_a;
-			node = stack;
+			min = (*stack)->cost_a + (*stack)->cost_b;
+			(*stack)->cost_t = node->cost_a + node->cost_b;
 		}
-		stack = stack->next;
+		//ft_printf("coste node : %d, min: %d\n", (*stack)->cost_t, min);
+		if (min < (*stack)->cost_t)
+		{
+			//ft_printf("kjjhefvkjhfeh\n\n\n");
+			node = (*stack);
+		}
+		(*stack) = (*stack)->next;
 	}
+	//ft_printf("value: %d, coste node min: %d\n", node->value, node->cost_t);
+	*stack = aux;
 	return (node);
 }
 
-t_stack	*ft_max_cost(t_stack *stack)
+t_stack	*ft_max_cost(t_stack **stack)
 {
 	int		max;
 	t_stack	*node;
@@ -95,14 +103,14 @@ t_stack	*ft_max_cost(t_stack *stack)
 
 	if (!stack)
 		return (NULL);
-	aux = stack;
-	max = aux->cost_a;
+	aux = *stack;
+	max = aux->cost_t;
 	node = aux;
 	while (aux)
 	{
-		if (aux->cost_a > max)
+		if (aux->cost_t > max)
 		{
-			max = aux->cost_a;
+			max = aux->cost_t;
 			node = aux;
 		}
 		aux = aux->next;

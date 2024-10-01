@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b)
 {

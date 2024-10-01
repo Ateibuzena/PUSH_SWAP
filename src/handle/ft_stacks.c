@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 t_stack	*ft_new_node(int value)
 {

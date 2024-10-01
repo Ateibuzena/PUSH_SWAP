@@ -75,7 +75,7 @@ void	ft_step_five(t_stack **stack_a, t_stack **stack_b);
 void	ft_update_a(t_stack	*node_a, char *move, int	cost);
 void	ft_update_b(t_stack	*node_i, t_stack *node_a, char *move, int cost);
 void	ft_update_ab(t_stack *node_max, t_stack *node_a, char *move, int cost);
-void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b);
+void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a);
 void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
@@ -102,8 +102,8 @@ int		ft_isordered(t_stack *stack);
 //ft_min_max.c
 t_stack	*ft_min_value(t_stack *stack);
 t_stack	*ft_max_value(t_stack *stack);
-t_stack	*ft_min_cost(t_stack *stack);
-t_stack	*ft_max_cost(t_stack *stack);
+t_stack	*ft_min_cost(t_stack **stack);
+t_stack	*ft_max_cost(t_stack **stack);
 
 //ft_immediate_predecessor.c
 t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b);

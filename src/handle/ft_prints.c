@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 void	ft_print_stack(t_stack *stack)
 {
 	while (stack)
 	{
-		ft_printf("value: %d\n", stack->value);
+		ft_printf("value: %d cost_a: %d cost_b: %d move_a: %s move_b: %s cost_t: %d\n", stack->value, stack->cost_a, stack->cost_b, stack->move_a, stack->move_b, stack->cost_t);
 		stack = stack->next;
 	}
 }

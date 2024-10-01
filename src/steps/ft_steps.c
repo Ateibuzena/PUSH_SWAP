@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:32 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/29 20:26:12 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:22:32 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 int	ft_step_one(t_stack **stack_a, t_stack **stack_b)
 {
@@ -41,33 +41,47 @@ void	ft_step_two(t_stack **a, t_stack **b)
 		ft_init_cost(node_a, stack_b);
 		node_a = node_a->next;
 	}
+	ft_min_cost(a);
 }
 
 void	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*node_a;
 
-	node_a = ft_min_cost((*stack_a));
-	ft_simultaneous_moves(stack_a, stack_b);
+	node_a = ft_min_cost(stack_a);
+	//ft_printf("antes: %d\n", node_a->cost_b);
+	ft_simultaneous_moves(stack_a, stack_b, node_a);
+	//ft_printf("dispues: %d\n", node_a->cost_b);
 	while (node_a->cost_a)
 	{
 		if (node_a->move_a && !ft_strncmp(node_a->move_a,
-				"rr", ft_strlen(node_a->move_a)))
+				"e", ft_strlen(node_a->move_a)))
+		{
+			node_a->cost_a -= 1;
 			ft_reverse_a(stack_a);
+		}
 		else if (node_a->move_a && !ft_strncmp(node_a->move_a,
-				"r", ft_strlen(node_a->move_a)))
+				"o", ft_strlen(node_a->move_a)))
+		{
+			node_a->cost_a -= 1;
 			ft_rotate_a(stack_a);
-		node_a->cost_a -= 1;
+		}
 	}
 	while (node_a->cost_b)
 	{
+		//ft_printf("bucle infinito: %d\n", node_a->cost_b);
 		if (node_a->move_b && !ft_strncmp(node_a->move_b,
-				"rr", ft_strlen(node_a->move_a)))
+				"e", ft_strlen(node_a->move_b)))
+		{
+			node_a->cost_b -= 1;
 			ft_reverse_b(stack_b);
+		}
 		else if (node_a->move_b && !ft_strncmp(node_a->move_b,
-				"r", ft_strlen(node_a->move_a)))
+				"o", ft_strlen(node_a->move_b)))
+		{
+			node_a->cost_b -= 1;
 			ft_rotate_b(stack_b);
-		node_a->cost_b -= 1;
+		}
 	}
 	ft_push_b(stack_a, stack_b);
 }

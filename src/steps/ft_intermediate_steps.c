@@ -6,39 +6,51 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:11 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/29 18:46:02 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:39:54 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/push_swap_github/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
-void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b)
+void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a)
 {
-	t_stack	*node_a;
-	int		min;
+	//t_stack	*node_a;
+	//int		min;
+	int		i;
 
-	node_a = ft_min_cost((*stack_a));
-	min = ft_min(node_a->cost_a, node_a->cost_b);
+	//ft_printf("entre en simultaneus move\n");
+	//node_a = ft_min_cost((*stack_a));
+	//ft_printf("node_a cost_a: %d, cost_b: %d\n", node_a->cost_a, node_a->cost_b);
+	i = 0;
+	//min = ft_min(node_a->cost_a, node_a->cost_b);
 	if (node_a->move_a && node_a->move_b && !ft_strncmp(node_a->move_a,
-			node_a->move_b, ft_strlen(node_a->move_b)))
+			node_a->move_b, ft_max(ft_strlen(node_a->move_b), ft_strlen(node_a->move_a))))
 	{
-		node_a->cost_t = ft_max(node_a->cost_a, node_a->cost_b);
-		node_a->cost_a -= min;
-		node_a->cost_b -= min;
-		while (min)
+		//node_a->cost_t = ft_max(node_a->cost_a, node_a->cost_b);
+		//ft_printf("min= %d\n", min);
+		while (i < node_a->cost_a && i < node_a->cost_b)
 		{
-			if (node_a->move_a && !ft_strncmp(node_a->move_a, "reverse",
+			if (!ft_strncmp(node_a->move_a, "e",
 					ft_strlen(node_a->move_a)))
+			{
+				//ft_printf("entre en doble reverse\n");
 				ft_reverse_ab(stack_a, stack_b);
-			if (node_a->move_a
-				&& !ft_strncmp(node_a->move_a, "rotate",
-					ft_strlen(node_a->move_a)))
+				node_a->cost_a -= 1;
+				node_a->cost_b -= 1;
+			}
+			else if (!ft_strncmp(node_a->move_a, "o", ft_strlen(node_a->move_a)))
+			{
+				//ft_printf("entre en doble rotate\n");
 				ft_rotate_ab(stack_a, stack_b);
-			min--;
+				//ft_printf("dentro de simultaneus: %d\n", node_a->cost_b);
+				node_a->cost_a -= 1;
+				node_a->cost_b -= 1;
+			}
+			i++;
 		}
 	}
-	else
-		node_a->cost_t = node_a->cost_a + node_a->cost_b;
+	/*else
+		node_a->cost_t = node_a->cost_a + node_a->cost_b;*/
 }
 
 void	ft_update_a(t_stack	*node_a, char *move, int cost)
@@ -65,9 +77,9 @@ void	ft_update_ab(t_stack *node_max, t_stack *node_a,
 {
 	if (!node_max || !node_a)
 		return ;
-	node_max->move_a = ft_strdup(move);
+	//node_max->move_a = ft_strdup(move);
 	node_a->move_b = ft_strdup(move);
-	node_max->cost_b = cost;
+	//node_max->cost_b = cost;
 	node_a->cost_b = cost;
 }
 
