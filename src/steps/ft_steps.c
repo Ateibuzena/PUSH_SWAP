@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:32 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/01 18:22:32 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:43:36 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_step_two(t_stack **a, t_stack **b)
 void	ft_step_three(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*node_a;
-
+		//(*stack) = (*stack)->next;
 	node_a = ft_min_cost(stack_a);
 	//ft_printf("antes: %d\n", node_a->cost_b);
 	ft_simultaneous_moves(stack_a, stack_b, node_a);
