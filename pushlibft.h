@@ -14,8 +14,8 @@ typedef struct s_stack
 	int				cost_t;
 	int				value;
 	int				size;
-	char			*move_a;
-	char			*move_b;
+	char			move_a;
+	char			move_b;
 
 	struct s_stack	*next;	
 } t_stack;
@@ -26,7 +26,7 @@ typedef struct s_stack
 void	ft_print_stack(t_stack *stack);
 
 //ft_inits.c
-void	ft_init_cost(t_stack *n_a, t_stack *stack_b);
+void	ft_init_cost(t_stack *node_a, t_stack *stack_b);
 void	ft_init_value(t_stack **stack, char **argv);
 void	ft_init_index(t_stack **stack);
 void	ft_inits(t_stack **stack);
@@ -65,17 +65,18 @@ void	ft_push_b(t_stack **stack_b, t_stack **stack_a);
 /*STEPS*/
 
 //ft_steps.c
-int		ft_step_one(t_stack **stack_a, t_stack **stack_b);
-void	ft_step_two(t_stack **a, t_stack **b);
-void	ft_step_three(t_stack **stack_a, t_stack **stack_b);
-void	ft_step_four(t_stack **stack_b);
-void	ft_step_five(t_stack **stack_a, t_stack **stack_b);
+void	ft_optimize_and_execute(t_stack **stack_a, t_stack **stack_b);
+void	ft_assign_costs(t_stack **a, t_stack **b);
+void	ft_process_move(t_stack **stack_a, t_stack **stack_b);
+void	ft_align_max_b(t_stack **stack_b);
+void	ft_move_to_a(t_stack **stack_a, t_stack **stack_b);
+void	ft_align_min_a(t_stack **stack_a);
 
 //ft_intermediate_steps.c
-void	ft_update_a(t_stack	*node_a, char *move, int	cost);
-void	ft_update_b(t_stack	*node_i, t_stack *node_a, char *move, int cost);
-void	ft_update_ab(t_stack *node_max, t_stack *node_a, char *move, int cost);
-void	ft_simultaneous_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a);
+void	ft_execute_moves_a(t_stack *node_a, t_stack **stack_a);
+void	ft_execute_moves_b(t_stack *node_a, t_stack **stack_b);
+void	ft_sync_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a);
+void	ft_update(t_stack *node_a, char move, int cost, char c);
 void	ft_sort_three(t_stack **stack_a);
 
 /*UTILS*/
@@ -103,7 +104,6 @@ int		ft_isordered(t_stack *stack);
 t_stack	*ft_min_value(t_stack *stack);
 t_stack	*ft_max_value(t_stack *stack);
 t_stack	*ft_min_cost(t_stack **stack);
-t_stack	*ft_max_cost(t_stack **stack);
 
 //ft_immediate_predecessor.c
 t_stack	*ft_immediate_predecessor_down(t_stack *node_a, t_stack *stack_b);
@@ -112,8 +112,9 @@ t_stack	*ft_immediate_predecessor_up(t_stack *node_a, t_stack *stack_a);
 //ft_join.c
 char	*ft_join(char const *s1, char const *s2);
 
+/*SRC*/
+
 //push_swap.c
-void	ft_final_step(t_stack **stack_a);
-int		main(int argc, char *argv[]);
+int		ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b);
 
 #endif

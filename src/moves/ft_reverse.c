@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:43:39 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/01 16:06:54 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:23:34 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,4 @@ void	ft_reverse_ab(t_stack **stack_a, t_stack **stack_b)
 	ft_reverse(stack_a);
 	ft_reverse(stack_b);
 	ft_printf("rrr\n");
-	//ft_printf("cost_a: %d, cost_b: %d\n", (*stack_a)->cost_a, (*stack_a)->cost_b);
 }

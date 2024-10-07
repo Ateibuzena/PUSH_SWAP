@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/01 18:22:45 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:44:00 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_inits(t_stack **stack)
 		aux->cost_a = 0;
 		aux->cost_b = 0;
 		aux->cost_t = 0;
-		aux->move_a = "o";
-		aux->move_b = "o";
+		aux->move_a = 'o';
+		aux->move_b = 'o';
 		aux = aux->next;
 	}
 }
@@ -79,32 +79,30 @@ void	ft_init_value(t_stack **stack, char **argv)
 	ft_inits(stack);
 }
 
-void	ft_init_cost(t_stack *n_a, t_stack *stack_b)
+void	ft_init_cost(t_stack *node_a, t_stack *stack_b)
 {
 	t_stack	*node_i;
-	
-	node_i = ft_immediate_predecessor_down(n_a, stack_b);
-	if ((n_a->pos_a) <= (n_a->size / 2))
-		ft_update_a(n_a, "o", n_a->pos_a);
-	else if ((n_a->pos_a) > (n_a->size / 2))
-		ft_update_a(n_a, "e", n_a->size - n_a->pos_a);
-	if (n_a->value > ft_max_value(stack_b)->value
-		|| n_a ->value < ft_min_value(stack_b)->value)
+
+	node_i = ft_immediate_predecessor_down(node_a, stack_b);
+	if ((node_a->pos_a) <= (node_a->size / 2))
+		ft_update(node_a, 'o', node_a->pos_a, 'a');
+	else if ((node_a->pos_a) > (node_a->size / 2))
+		ft_update(node_a, 'e', node_a->size - node_a->pos_a, 'a');
+	if (node_a->value > ft_max_value(stack_b)->value
+		|| node_a ->value < ft_min_value(stack_b)->value)
 	{
 		if (ft_max_value(stack_b)->pos_a <= (stack_b->size / 2))
-			ft_update_ab(ft_max_value(stack_b), n_a, "o",
-				ft_max_value(stack_b)->pos_a);
+			ft_update(node_a, 'o', ft_max_value(stack_b)->pos_a, 'b');
 		else
-			ft_update_ab(ft_max_value(stack_b), n_a, "e",
-				stack_b->size - ft_max_value(stack_b)->pos_a);
+			ft_update(node_a, 'e',
+				stack_b->size - ft_max_value(stack_b)->pos_a, 'b');
 	}
-	else if (n_a->value < ft_max_value(stack_b)->value
-		&& n_a->value > ft_min_value(stack_b)->value)
+	else if (node_a->value < ft_max_value(stack_b)->value
+		&& node_a->value > ft_min_value(stack_b)->value)
 	{
 		if (node_i->pos_a <= (stack_b->size / 2))
-			ft_update_b(node_i, n_a, "o", node_i->pos_a);
+			ft_update(node_a, 'o', node_i->pos_a, 'b');
 		else
-			ft_update_b(node_i, n_a, "e", stack_b->size - node_i->pos_a);
+			ft_update(node_a, 'e', stack_b->size - node_i->pos_a, 'b');
 	}
-	//ft_min_cost(&n_a);
 }

@@ -6,21 +6,25 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:49:03 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/02 23:29:23 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:54:10 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
-void	ft_final_step(t_stack **stack_a)
+int	ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b)
 {
-	while (ft_min_value((*stack_a))->pos_a != 0)
+	ft_init_index(stack_a);
+	if (ft_isordered((*stack_a)))
+		return (0);
+	if (ft_stack_size((*stack_a)) > 3)
+		(ft_push_b(stack_a, stack_b), ft_push_b(stack_a, stack_b));
+	else
 	{
-		if (ft_min_value((*stack_a))->pos_a <= ft_stack_size((*stack_a)) / 2)
-			ft_rotate_a(stack_a);
-		else
-			ft_reverse_a(stack_a);
+		ft_sort_three(stack_a);
+		return (0);
 	}
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -35,21 +39,14 @@ int	main(int argc, char *argv[])
 		return (0);
 	split = ft_check_args(argc, argv);
 	if (!split)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		return (ft_printf("Error\n"), 1);
 	(ft_init_value(&stack_a, split), ft_free_split(split));
-	if (!stack_a)
-		return (0);
-	if (!ft_step_one(&stack_a, &stack_b))
+	if (!stack_a || !ft_prepare_stacks(&stack_a, &stack_b))
 		return (0);
 	while (!ft_isordered(stack_a) && ft_stack_size(stack_a) > 3)
-		(ft_step_two(&stack_a, &stack_b), ft_step_three(&stack_a, &stack_b));
-	//ft_print_stack(stack_a);
-	(ft_sort_three(&stack_a), ft_step_four(&stack_b));
-
-	(ft_step_five(&stack_a, &stack_b), ft_final_step(&stack_a));
-	(free(stack_b), ft_free_stack(stack_a));
+		(ft_assign_costs(&stack_a, &stack_b), ft_process_move(&stack_a, &stack_b));
+	(ft_sort_three(&stack_a), ft_align_max_b(&stack_b));
+	(ft_move_to_a(&stack_a, &stack_b), ft_align_min_a(&stack_a));
+	(ft_free_stack(stack_b), ft_free_stack(stack_a));
 	return (0);
 }
