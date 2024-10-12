@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
+#include "/mnt/c/Users/enaat/Documents/Repositorios/42/push_swap/pushlibft.h"
 
 int	*ft_sort_array(t_stack *stack, int size, int *array)
 {

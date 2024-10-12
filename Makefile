@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = /home/azubieta/sgoinfre/azubieta/utils/libft
+LIBFT_DIR = /mnt/c/Users/enaat/Documents/Repositorios/42/Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 
@@ -17,6 +17,9 @@ SRCS = $(SRC_DIR)/push_swap.c\
 		$(SRC_DIR)/steps/ft_steps.c $(SRC_DIR)/steps/ft_intermediate_steps.c\
 		$(SRC_DIR)/utils/ft_math.c\
 		$(SRC_DIR)/handle/ft_prints.c\
+
+# Excluir la carpeta bonus
+SRCS := $(filter-out $(SRC_DIR)/bonus/%.c, $(SRCS))
 
 OBJ_DIR = ./objs
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

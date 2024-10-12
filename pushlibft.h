@@ -1,7 +1,7 @@
 #ifndef PUSHLIBFT_H
 #define PUSHLIBFT_H
 
-# include "/home/azubieta/sgoinfre/azubieta/utils/libft/libft.h"
+# include "/mnt/c/Users/enaat/Documents/Repositorios/42/Libft/libft.h"
 
 typedef struct s_stack
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
+#include "/mnt/c/Users/enaat/Documents/Repositorios/42/push_swap/pushlibft.h"
 
 void	ft_print_stack(t_stack *stack)
 {
