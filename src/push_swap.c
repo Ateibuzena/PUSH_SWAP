@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:49:03 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/07 12:54:10 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/17 21:23:02 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/mnt/c/Users/enaat/Documents/Repositorios/42/push_swap/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 int	ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b)
 {
@@ -42,9 +42,12 @@ int	main(int argc, char *argv[])
 		return (ft_printf("Error\n"), 1);
 	(ft_init_value(&stack_a, split), ft_free_split(split));
 	if (!stack_a || !ft_prepare_stacks(&stack_a, &stack_b))
-		return (0);
+		return (ft_free_stack(stack_a), 0);
 	while (!ft_isordered(stack_a) && ft_stack_size(stack_a) > 3)
-		(ft_assign_costs(&stack_a, &stack_b), ft_process_move(&stack_a, &stack_b));
+	{
+		ft_assign_costs(&stack_a, &stack_b);
+		ft_process_move(&stack_a, &stack_b);
+	}
 	(ft_sort_three(&stack_a), ft_align_max_b(&stack_b));
 	(ft_move_to_a(&stack_a, &stack_b), ft_align_min_a(&stack_a));
 	(ft_free_stack(stack_b), ft_free_stack(stack_a));

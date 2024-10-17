@@ -6,17 +6,19 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/07 12:44:00 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:34:57 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/mnt/c/Users/enaat/Documents/Repositorios/42/push_swap/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 void	ft_inits(t_stack **stack)
 {
 	t_stack	*aux;
 	int		i;
 
+	if ((*stack) == NULL)
+		return ;
 	aux = *stack;
 	i = 0;
 	while (aux)

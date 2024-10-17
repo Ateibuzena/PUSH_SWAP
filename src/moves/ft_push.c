@@ -6,11 +6,11 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:27:37 by azubieta          #+#    #+#             */
-/*   Updated: 2024/09/29 18:45:55 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:35:07 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/mnt/c/Users/enaat/Documents/Repositorios/42/push_swap/pushlibft.h"
+#include "/home/azubieta/sgoinfre/azubieta/PUSH_SWAP/pushlibft.h"
 
 void	ft_push(t_stack **source, t_stack **dest)
 {
@@ -24,8 +24,10 @@ void	ft_push(t_stack **source, t_stack **dest)
 	ft_add_front(dest, first_a);
 	*source = second_a;
 	first_a = *source;
-	ft_inits(source);
-	ft_inits(dest);
+	if ((*source) != NULL)
+		ft_inits(source);
+	if ((*dest) != NULL)
+		ft_inits(dest);
 }
 
 void	ft_push_b(t_stack **source, t_stack **dest)

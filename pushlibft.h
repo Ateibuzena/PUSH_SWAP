@@ -1,7 +1,7 @@
 #ifndef PUSHLIBFT_H
 #define PUSHLIBFT_H
 
-# include "/mnt/c/Users/enaat/Documents/Repositorios/42/Libft/libft.h"
+# include "/home/azubieta/sgoinfre/azubieta/utils/libft/libft.h"
 
 typedef struct s_stack
 {
@@ -19,6 +19,18 @@ typedef struct s_stack
 
 	struct s_stack	*next;	
 } t_stack;
+
+typedef struct s_pushswap
+{
+	t_stack			*stack_a;
+	t_stack			*stack_b;
+	char			**split;
+	char			**buffer;
+	char			*line;
+	long int		index;
+	long long int	max;
+	
+} t_pushswap;
 
 /*HANDLE*/
 
@@ -116,5 +128,13 @@ char	*ft_join(char const *s1, char const *s2);
 
 //push_swap.c
 int		ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b);
+
+/*BONUS*/
+
+//checker.c
+char	*ft_clean_sentence(char *str);
+int		ft_execute_bonus_moves(char **buffer, int index, t_stack **stack_a, t_stack **stack_b);
+int		ft_execute_intermediate_moves(char *buffer, t_stack **stack_a, t_stack **stack_b);
+void	ft_init_data(t_pushswap **data, int argc, char *argv[]);
 
 #endif
