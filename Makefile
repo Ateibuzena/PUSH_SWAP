@@ -1,6 +1,6 @@
 # Variables
 CC = gcc
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = /home/azubieta/sgoinfre/azubieta/utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a
