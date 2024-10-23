@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:23:26 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:13 by azubieta         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:29:27 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	ft_init_data(t_pushswap **data, int argc, char *argv[])
 	(*data)->stack_b = NULL;
 	(*data)->index = 0;
 	(*data)->split = ft_check_args(argc, argv);
+	if (!(*data)->split || ft_strlen_double((*data)->split) == 0)
+		return ;
 	(ft_init_value(&((*data)->stack_a), (*data)->split));
 	ft_free_split((*data)->split);
 	while (1)
@@ -109,8 +111,10 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	ft_init_data(&data, argc, argv);
-	if (!data | !data->buffer | !data->split)
+	if (!data || !data->buffer || !(data->split))
 		return (ft_printf("Error\n"), 1);
+	if (ft_strlen_double(data->split) == 0)
+		return (0);
 	if (!ft_execute_bonus_moves(data->buffer,
 			data->index, &(data->stack_a), &(data->stack_b)))
 	{
