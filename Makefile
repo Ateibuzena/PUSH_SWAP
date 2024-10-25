@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = /home/azubieta/sgoinfre/azubieta/utils/libft
+LIBFT_DIR = /mnt/c/Users/enaat/Documents/Repositorios/42/Libft/
 LIBFT = $(LIBFT_DIR)/libft.a
 
 
