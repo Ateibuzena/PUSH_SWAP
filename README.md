@@ -1,19 +1,97 @@
-# PUSH_SWAP
+# Push_swap
 
-**Push Swap** is a sorting algorithm project designed to efficiently sort a stack of integers using a minimal set of operations. The goal is to implement two stacks, `A` and `B`, and sort stack `A` using a predefined set of operations, while keeping stack `B` as a temporary storage.
+Push_swap is a sorting project that involves implementing and optimizing an algorithm to sort a stack of integers using two stacks and a limited set of instructions. This project is designed to teach and evaluate optimization and algorithmic skills.
 
-The challenge lies in creating an algorithm that can sort the stack with the fewest number of operations possible, using the following allowed commands:
+## Description
 
-- **`sa` (swap a):** Swap the first two elements of stack A.
-- **`sb` (swap b):** Swap the first two elements of stack B.
-- **`ss`:** Perform `sa` and `sb` simultaneously.
-- **`pa` (push a):** Move the first element from stack B to stack A.
-- **`pb` (push b):** Move the first element from stack A to stack B.
-- **`ra` (rotate a):** Rotate all elements of stack A up by one.
-- **`rb` (rotate b):** Rotate all elements of stack B up by one.
-- **`rr`:** Perform `ra` and `rb` simultaneously.
-- **`rra` (reverse rotate a):** Rotate all elements of stack A down by one.
-- **`rrb` (reverse rotate b):** Rotate all elements of stack B down by one.
-- **`rrr`:** Perform `rra` and `rrb` simultaneously.
+The goal of *push_swap* is to sort a list of numbers in stack `a` using a second stack `b` and a specific set of instructions. The number of moves should be minimized to optimize the solution. The instructions you can use are:
 
-The project is an excellent exercise in algorithm optimization and problem-solving within a constrained environment. By designing and implementing an efficient algorithm, you will deepen your understanding of sorting techniques, data structures, and performance optimization.
+- `sa` : swap the first two elements in stack `a`.
+- `sb` : swap the first two elements in stack `b`.
+- `ss` : swap the first two elements in both stacks `a` and `b`.
+- `pa` : push the first element from stack `b` to stack `a`.
+- `pb` : push the first element from stack `a` to stack `b`.
+- `ra` : rotate all elements in stack `a` upwards.
+- `rb` : rotate all elements in stack `b` upwards.
+- `rr` : rotate all elements in both stacks `a` and `b` upwards.
+- `rra` : rotate all elements in stack `a` downwards.
+- `rrb` : rotate all elements in stack `b` downwards.
+- `rrr` : rotate all elements in both stacks `a` and `b` downwards.
+
+## File Structure
+
+The project file structure is as follows:
+
+```
+push_swap/
+│
+├── src/
+│   ├── push_swap.c              # Main file for the main project
+│   ├── handle              
+│   │   ├── ft_inits.c            
+│   │   ├── ft_prints.c
+│   │   ├── ft_stacks.c
+│   ├── moves
+│   │   ├── ft_push.c
+│   │   ├── ft_reverse.c
+│   │   ├── ft_rotate.c
+│   │   ├── ft_swap.c
+│   ├── steps
+│   │   ├── ft_steps.c
+│   │   ├── ft_intermediate_steps.c
+│   ├── utils
+│   │   ├── ft_check_args.c
+│   │   ├── ft_immediate_predecessor.c
+│   │   ├── ft_isordered.c
+│   │   ├── ft_join.c
+│   │   ├── ft_math.c
+│   │   ├── ft_min_max.c
+│   │   ├── ft_free.c
+│   │   ├── ft_sort_arrays.c
+│   └── bonus/
+│       ├── checker.c           # Main file for the bonus
+│
+├── objs/                     # Directory for main project objects when execute `make`
+├── objs_bonus/               # Directory for bonus objects when execute `make bonus`
+├── Makefile                  # Makefile
+└── pushlibft.h               # Library
+```
+
+## Installation
+
+1. Clone the repository to your machine.
+2. Navigate to the main directory.
+3. Run `make` to compile the main project or `make bonus` to compile the bonus version.
+4. The executable file `push_swap` will be available in the root directory.
+
+## Usage
+
+To run the program:
+
+```bash
+./push_swap <numbers_to_sort>
+```
+
+Example:
+
+```bash
+./push_swap 3 2 5 1 4
+```
+
+This will output the optimal sequence of operations required to sort the stack.
+
+## Implementation
+
+The project uses a cost-based algorithm that sorts the numbers in descending order in stack `b`, selecting the optimal path to minimize the number of moves. This approach ensures step optimization for the given set size.
+
+## Bonus
+
+The bonus version includes a visual check of the moves performed in the project. This additional functionality can be executed using the `checker` file, which receives `push_swap` instructions and verifies if the result is correct.
+
+```bash
+./checker <numbers_to_sort>
+```
+
+## Author
+
+Ana Zubieta
