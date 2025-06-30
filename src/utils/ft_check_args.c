@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:56 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:56 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/06/30 23:29:08 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,32 @@ char	*ft_join_args(int argc, char *argv[])
 int	ft_duplicate_args(char **split, int pos_f)
 {
 	int	i;
+	int num_posf;
+	int num_i;
 
+	num_posf = ft_atoi(split[pos_f]);
 	i = 0;
-	if (pos_f != 0)
+	while (i < pos_f)
 	{
-		while (i < pos_f)
-		{
-			if (!ft_strncmp(split[i],
-					split[pos_f],
-					ft_max(ft_strlen(split[i]),
-						ft_strlen(split[pos_f]))))
-				return (1);
-			i++;
-		}
+		num_i = ft_atoi(split[i]);
+		if (num_i == num_posf)
+			return (1);
+		i++;
 	}
 	return (0);
+}
+
+int	ft_check_range(const char *str)
+{
+	long	val;
+	char	*endptr;
+
+	val = ft_strtol(str, &endptr, 10);
+	if (*endptr != '\0')
+		return (0);
+	if ((val > INT_MAX) || (val < INT_MIN))
+		return (0);
+	return (1);
 }
 
 char	**ft_check_args(int argc, char *argv[])
@@ -66,7 +77,10 @@ char	**ft_check_args(int argc, char *argv[])
 	{
 		n = ft_atoi(split[i]);
 		if ((!ft_isdigit(split[i][0]) && split[i][0] != '-')
-			|| (split[i][0] != '0' && !n) || ft_duplicate_args(split, i))
+			|| (split[i][0] != '0' && !n)
+			|| !ft_strisnumber(split[i])
+			|| !ft_check_range(split[i])
+			|| ft_duplicate_args(split, i))
 		{
 			ft_free_split(split);
 			return (NULL);

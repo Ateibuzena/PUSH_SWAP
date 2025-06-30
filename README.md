@@ -1,6 +1,6 @@
 # Push_swap
 
-![Demo](https://github.com/Ateibuzena/PUSH_SWAP/blob/main/100_randons_visualizer_gif.gif)
+![Demo](https://github.com/Ateibuzena/PUSH_SWAP/blob/main/visualizer.gif)
 
 
 Push_swap is a sorting project that involves implementing and optimizing an algorithm to sort a stack of integers using two stacks and a limited set of instructions. This project is designed to teach and evaluate optimization and algorithmic skills.

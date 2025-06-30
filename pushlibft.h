@@ -1,7 +1,7 @@
 #ifndef PUSHLIBFT_H
 # define PUSHLIBFT_H
 
-# include "/mnt/c/Users/enaat/Documents/Repositorios/42/Libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
@@ -102,6 +102,7 @@ int		*ft_sort_array(t_stack *stack, int size, int *array);
 
 //ft_checks_args.c
 char	**ft_check_args(int argc, char *argv[]);
+int		ft_check_range(const char *str);
 int		ft_duplicate_args(char **split, int pos_f);
 char	*ft_join_args(int argc, char *argv[]);
 
