@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:01:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 10:01:55 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:08:00 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	ft_align_max_b(t_stack **b)
 {
-	t_stack *max;
-	int size;
-	int pos;
+	t_stack	*max;
+	int		size;
+	int		pos;
 
 	if (!b || !*b)
 		return ;
-
 	max = ft_max_value(*b);
 	if (!max)
 		return ;
-
 	size = ft_stack_size(*b);
 	pos = ft_get_position(*b, max);
 	while (pos > 0)

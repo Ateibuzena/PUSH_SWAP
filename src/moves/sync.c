@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:11 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 10:08:51 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:06:46 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,14 @@ void	ft_execute_moves_b(t_stack *node_a, t_stack **stack_b)
 
 void	ft_sync_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a)
 {
-	int common;
+	int	common;
 
 	if (node_a->move_a && node_a->move_b && node_a->move_a == node_a->move_b)
 	{
-		common = (node_a->cost_a < node_a->cost_b) ? node_a->cost_a : node_a->cost_b;
+		if (node_a->cost_a < node_a->cost_b)
+			common = node_a->cost_a;
+		else
+			common = node_a->cost_b;
 		while (common--)
 		{
 			if (node_a->move_a == 'e')

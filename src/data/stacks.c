@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:06:29 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 10:06:51 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:08:47 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ void	ft_add_front(t_stack **stack, t_stack *node)
 
 int	ft_get_position(t_stack *stack, t_stack *target)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (stack)
 	{
 		if (stack == target)

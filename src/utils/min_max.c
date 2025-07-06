@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min_max.c                                       :+:      :+:    :+:   */
+/*   min_max.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:46:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 09:46:48 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:07:26 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ t_stack	*ft_max_value(t_stack *stack)
 	return (node);
 }
 
-t_stack *ft_min_cost(t_stack **a)
+t_stack	*ft_min_cost(t_stack **a)
 {
-	t_stack *current;
-	t_stack *cheapest;
+	t_stack	*current;
+	t_stack	*cheapest;
 	int		cost_current;
 	int		cost_cheapest;
 
@@ -73,12 +73,10 @@ t_stack *ft_min_cost(t_stack **a)
 			cost_current = ft_max(current->cost_a, current->cost_b);
 		else
 			cost_current = current->cost_a + current->cost_b;
-
 		if (cheapest->move_a == cheapest->move_b)
 			cost_cheapest = ft_max(cheapest->cost_a, cheapest->cost_b);
 		else
 			cost_cheapest = cheapest->cost_a + cheapest->cost_b;
-
 		if (cost_current < cost_cheapest)
 			cheapest = current;
 		current = current->next;
