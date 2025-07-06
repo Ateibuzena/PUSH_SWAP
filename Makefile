@@ -74,7 +74,7 @@ $(OBJ_DIR_BONUS):
 	@mkdir -p $(OBJ_DIR_BONUS)
 	@echo "$(YELLOW)✅ Bonus object directory $(OBJ_DIR_BONUS) ready.$(RESET)"
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_SRCS)
 	@$(MAKE) -C $(LIBFT_DIR)
 
 clean:

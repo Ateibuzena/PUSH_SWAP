@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:23:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 09:14:28 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:40:50 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 		}
 		free(data.line);
 	}
-	if (!ft_isordered(data.stack_a))
+	if (ft_isordered(data.stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

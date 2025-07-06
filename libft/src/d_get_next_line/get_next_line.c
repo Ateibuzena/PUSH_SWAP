@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:47:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/05 14:17:12 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:34:38 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,5 @@ char	*get_next_line(int fd)
 	current->buffer = ft_buffer_update(current->buffer);
 	if (!current->buffer)
 		ft_freenode(&list, fd);
-	return (ft_freenode(&current, fd), line);
+	return (line);
 }
