@@ -1,4 +1,4 @@
-# Push_swap
+# push_swap
 
 ![Demo](https://github.com/Ateibuzena/PUSH_SWAP/blob/main/visualizer.gif)
 
