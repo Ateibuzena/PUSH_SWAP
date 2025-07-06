@@ -27,37 +27,41 @@ The project file structure is as follows:
 
 ```
 push_swap/
-│
-├── src/
-│   ├── push_swap.c              # Main file for the main project
-│   ├── handle              
-│   │   ├── ft_inits.c            
-│   │   ├── ft_prints.c
-│   │   ├── ft_stacks.c
-│   ├── moves
-│   │   ├── ft_push.c
-│   │   ├── ft_reverse.c
-│   │   ├── ft_rotate.c
-│   │   ├── ft_swap.c
-│   ├── steps
-│   │   ├── ft_steps.c
-│   │   ├── ft_intermediate_steps.c
-│   ├── utils
-│   │   ├── ft_check_args.c
-│   │   ├── ft_immediate_predecessor.c
-│   │   ├── ft_isordered.c
-│   │   ├── ft_join.c
-│   │   ├── ft_math.c
-│   │   ├── ft_min_max.c
-│   │   ├── ft_free.c
-│   │   ├── ft_sort_arrays.c
-│   └── bonus/
-│       ├── checker.c           # Main file for the bonus
-│
-├── objs/                     # Directory for main project objects when execute `make`
-├── objs_bonus/               # Directory for bonus objects when execute `make bonus`
-├── Makefile                  # Makefile
-└── pushlibft.h               # Library
+├── libft
+├── Makefile
+├── pushlibft.h
+├── README.md
+├── src
+│   ├── bonus
+│   │   └── checker.c
+│   ├── core
+│   │   ├── alignment.c
+│   │   ├── costs.c
+│   │   ├── init_steps.c
+│   │   ├── logic.c
+│   │   └── sort_three.c
+│   ├── data
+│   │   ├── init.c
+│   │   ├── print.c
+│   │   └── stacks.c
+│   ├── input
+│   │   ├── check_args.c
+│   │   └── free.c
+│   ├── main.c
+│   ├── moves
+│   │   ├── push.c
+│   │   ├── reverse.c
+│   │   ├── rotate.c
+│   │   ├── swap.c
+│   │   └── sync.c
+│   └── utils
+│       ├── isordered.c
+│       ├── join.c
+│       ├── math.c
+│       ├── min_max.c
+│       ├── predecessor.c
+│       └── sort_arrays.c
+└── visualizer.gif
 ```
 
 ## Installation
