@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_min_max.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:46:26 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:47:16 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 09:46:48 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ t_stack	*ft_min_value(t_stack *stack)
 
 t_stack	*ft_max_value(t_stack *stack)
 {
-	int		max;
 	t_stack	*node;
 	t_stack	*aux;
+	int		max;
 
 	if (!stack)
 		return (NULL);
 	aux = stack;
-	max = aux->value;
 	node = aux;
+	max = aux->value;
 	while (aux)
 	{
 		if (aux->value > max)
@@ -58,31 +58,30 @@ t_stack	*ft_max_value(t_stack *stack)
 	return (node);
 }
 
-t_stack	*ft_min_cost(t_stack **stack)
+t_stack *ft_min_cost(t_stack **a)
 {
-	int		min;
-	t_stack	*node;
-	t_stack	*aux;
+	t_stack *current;
+	t_stack *cheapest;
+	int		cost_current;
+	int		cost_cheapest;
 
-	node = *stack;
-	aux = *stack;
-	(*stack) = (*stack)->next;
-	while ((*stack))
+	current = *a;
+	cheapest = current;
+	while (current)
 	{
-		if ((*stack)->move_a == (*stack)->move_b)
-		{
-			min = ft_max((*stack)->cost_a, (*stack)->cost_b);
-			(*stack)->cost_t = ft_max(node->cost_a, node->cost_b);
-		}
+		if (current->move_a == current->move_b)
+			cost_current = ft_max(current->cost_a, current->cost_b);
 		else
-		{
-			min = (*stack)->cost_a + (*stack)->cost_b;
-			(*stack)->cost_t = node->cost_a + node->cost_b;
-		}
-		if (min < (*stack)->cost_t)
-			node = (*stack);
-		(*stack) = (*stack)->next;
+			cost_current = current->cost_a + current->cost_b;
+
+		if (cheapest->move_a == cheapest->move_b)
+			cost_cheapest = ft_max(cheapest->cost_a, cheapest->cost_b);
+		else
+			cost_cheapest = cheapest->cost_a + cheapest->cost_b;
+
+		if (cost_current < cost_cheapest)
+			cheapest = current;
+		current = current->next;
 	}
-	*stack = aux;
-	return (node);
+	return (cheapest);
 }

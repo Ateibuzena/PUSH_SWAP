@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanin <chanin@student.42malaga.com>       +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:47:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/05/28 17:14:44 by chanin           ###   ########.fr       */
+/*   Updated: 2025/07/05 14:17:12 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static char	*ft_buffer_update(char *buffer)
 		i++;
 	if (buffer[i] == '\0')
 		return (ft_free(buffer));
-	ptr = malloc(((ft_strlen(buffer) - i)
-				+ 1) * sizeof(char));
+	ptr = malloc(((ft_strlen(buffer) - i) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
 	i++;
@@ -34,8 +33,7 @@ static char	*ft_buffer_update(char *buffer)
 	while (buffer[i])
 		ptr[j++] = buffer[i++];
 	ptr[j] = '\0';
-	free(buffer);
-	buffer = NULL;
+	ft_free(buffer);
 	return (ptr);
 }
 
@@ -122,5 +120,5 @@ char	*get_next_line(int fd)
 	current->buffer = ft_buffer_update(current->buffer);
 	if (!current->buffer)
 		ft_freenode(&list, fd);
-	return (line);
+	return (ft_freenode(&current, fd), line);
 }

@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 23:04:29 by azubieta          #+#    #+#             */
-/*   Updated: 2025/06/30 23:04:49 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:14:40 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_strisnumber(char *str)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	if (str[0] == '-' && str[1] != '\0')
-		i = 1; // permite el signo negativo solo en la primera posición
-
+		i = 1;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0); // hay un carácter que no es dígito
+			return (0);
 		i++;
 	}
 	return (1);

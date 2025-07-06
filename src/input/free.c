@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prints.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 18:45:53 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:23 by azubieta         ###   ########.fr       */
+/*   Created: 2024/09/24 12:46:01 by azubieta          #+#    #+#             */
+/*   Updated: 2025/07/06 10:11:13 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushlibft.h"
 
-void	ft_print_stack(t_stack *stack)
+void	ft_free_stack(t_stack *head)
 {
-	while (stack)
+	t_stack	*temp;
+
+	while (head != NULL)
 	{
-		ft_printf("v: %d c_a: %d c_b: %d m_a: %c m_b: %c c_t: %d\n",
-			stack->value, stack->cost_a, stack->cost_b,
-			stack->move_a, stack->move_b, stack->cost_t);
-		stack = stack->next;
+		temp = head;
+		head = head->next;
+		free(temp);
 	}
+}
+
+void	ft_free_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a)
+		ft_free_stack(stack_a);
+	if (stack_b)
+		ft_free_stack(stack_b);
 }

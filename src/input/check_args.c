@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:56 by azubieta          #+#    #+#             */
-/*   Updated: 2025/06/30 23:29:08 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 09:04:28 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_join_args(int argc, char *argv[])
 int	ft_duplicate_args(char **split, int pos_f)
 {
 	int	i;
-	int num_posf;
-	int num_i;
+	int	num_posf;
+	int	num_i;
 
 	num_posf = ft_atoi(split[pos_f]);
 	i = 0;
@@ -82,7 +82,7 @@ char	**ft_check_args(int argc, char *argv[])
 			|| !ft_check_range(split[i])
 			|| ft_duplicate_args(split, i))
 		{
-			ft_free_split(split);
+			ft_freedouble(split);
 			return (NULL);
 		}
 		i++;

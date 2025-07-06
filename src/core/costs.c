@@ -1,84 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inits.c                                         :+:      :+:    :+:   */
+/*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 12:26:20 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:47:56 by azubieta         ###   ########.fr       */
+/*   Created: 2025/07/06 09:59:45 by azubieta          #+#    #+#             */
+/*   Updated: 2025/07/06 10:00:50 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushlibft.h"
 
-void	ft_inits(t_stack **stack)
+void	ft_update(t_stack *node_a, char move, int cost, char c)
 {
-	t_stack	*aux;
-	int		i;
-
-	if ((*stack) == NULL)
+	if (!node_a)
 		return ;
-	aux = *stack;
-	i = 0;
-	while (aux)
+	if (c == 'a')
 	{
-		aux->pos_a = i;
-		i++;
-		aux = aux->next;
+		node_a->move_a = move;
+		node_a->cost_a = cost;
 	}
-	aux = *stack;
-	while (aux)
+	else if (c == 'b')
 	{
-		aux->size = i;
-		aux->cost_a = 0;
-		aux->cost_b = 0;
-		aux->cost_t = 0;
-		aux->move_a = 'o';
-		aux->move_b = 'o';
-		aux = aux->next;
+		node_a->move_b = move;
+		node_a->cost_b = cost;
 	}
-}
-
-void	ft_init_index(t_stack **stack)
-{
-	int		*array;
-	t_stack	*aux;
-	int		i;
-
-	array = malloc((*stack)->size * sizeof(int));
-	if (!array)
-		return ;
-	array = ft_sort_array(*stack, (*stack)->size, array);
-	aux = *stack;
-	while (aux)
-	{
-		i = 0;
-		while (i < (*stack)->size)
-		{
-			if (aux->value == array[i])
-				aux->pos_f = i;
-			i++;
-		}
-		aux = aux->next;
-	}
-	free(array);
-}
-
-void	ft_init_value(t_stack **stack, char **argv)
-{
-	int			i;
-	t_stack		*node;
-
-	i = 0;
-	while (argv[i])
-	{
-		node = ft_new_node(ft_atoi(argv[i]));
-		ft_add_back(stack, node);
-		node->pos_a = i;
-		i++;
-	}
-	ft_inits(stack);
 }
 
 void	ft_init_cost(t_stack *node_a, t_stack *stack_b)
@@ -107,4 +54,19 @@ void	ft_init_cost(t_stack *node_a, t_stack *stack_b)
 		else
 			ft_update(node_a, 'e', stack_b->size - node_i->pos_a, 'b');
 	}
+}
+
+void	ft_assign_costs(t_stack **a, t_stack **b)
+{
+	t_stack	*node_a;
+	t_stack	*stack_b;
+
+	node_a = *a;
+	stack_b = *b;
+	while (node_a)
+	{
+		ft_init_cost(node_a, stack_b);
+		node_a = node_a->next;
+	}
+	ft_min_cost(a);
 }

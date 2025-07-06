@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intermediate_steps.c                            :+:      :+:    :+:   */
+/*   sync.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:11 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:47 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 10:08:51 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,63 +48,19 @@ void	ft_execute_moves_b(t_stack *node_a, t_stack **stack_b)
 
 void	ft_sync_moves(t_stack **stack_a, t_stack **stack_b, t_stack *node_a)
 {
-	int		i;
+	int common;
 
-	i = 0;
 	if (node_a->move_a && node_a->move_b && node_a->move_a == node_a->move_b)
 	{
-		while (i < node_a->cost_a && i < node_a->cost_b)
+		common = (node_a->cost_a < node_a->cost_b) ? node_a->cost_a : node_a->cost_b;
+		while (common--)
 		{
 			if (node_a->move_a == 'e')
-			{
 				ft_reverse_ab(stack_a, stack_b);
-				node_a->cost_a -= 1;
-				node_a->cost_b -= 1;
-			}
 			else if (node_a->move_a == 'o')
-			{
 				ft_rotate_ab(stack_a, stack_b);
-				node_a->cost_a -= 1;
-				node_a->cost_b -= 1;
-			}
-			i++;
+			node_a->cost_a--;
+			node_a->cost_b--;
 		}
-	}
-}
-
-void	ft_update(t_stack *node_a, char move, int cost, char c)
-{
-	if (!node_a)
-		return ;
-	if (c == 'a')
-	{
-		node_a->move_a = move;
-		node_a->cost_a = cost;
-	}
-	else if (c == 'b')
-	{
-		node_a->move_b = move;
-		node_a->cost_b = cost;
-	}
-}
-
-void	ft_sort_three(t_stack **stack_a)
-{
-	if (!ft_isordered((*stack_a)))
-	{
-		if (ft_max_value((*stack_a))->pos_a == 0)
-		{
-			ft_rotate_a(stack_a);
-			if (!ft_isordered((*stack_a)))
-				ft_swap_a(stack_a);
-		}
-		else if (ft_max_value((*stack_a))->pos_a == 1)
-		{
-			ft_reverse_a(stack_a);
-			if (!ft_isordered((*stack_a)))
-				ft_swap_a(stack_a);
-		}
-		else
-			ft_swap_a(stack_a);
 	}
 }

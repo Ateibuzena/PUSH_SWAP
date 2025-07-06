@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:43:39 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:35 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/05 11:43:11 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_reverse(t_stack **stack)
 	t_stack	*init;
 	int		i;
 
-	if (ft_stack_size(*stack) == 1)
+	if (ft_stack_size(*stack) <= 1)
 		return ;
 	i = 1;
 	init = *stack;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:44:26 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:43 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 10:08:32 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_swap(t_stack **stack)
 	t_stack	*second;
 	t_stack	*third;
 
-	if (ft_stack_size(*stack) == 1)
+	if (ft_stack_size(*stack) <= 1)
 		return ;
 	third = *stack;
 	first = *stack;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:43:59 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:39 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/05 11:43:04 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_rotate(t_stack **stack)
 	t_stack	*init;
 	int		i;
 
-	if (ft_stack_size(*stack) == 1)
+	if (ft_stack_size(*stack) <= 1)
 		return ;
 	last = *stack;
 	init = *stack;

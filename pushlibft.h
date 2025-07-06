@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushlibft.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 14:22:29 by azubieta          #+#    #+#             */
+/*   Updated: 2025/07/06 09:54:16 by azubieta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSHLIBFT_H
 # define PUSHLIBFT_H
 
@@ -18,19 +30,14 @@ typedef struct s_stack
 	char			move_b;
 
 	struct s_stack	*next;	
-} t_stack;
+}	t_stack;
 
 typedef struct s_pushswap
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
-	char			**split;
-	char			**buffer;
 	char			*line;
-	long int		index;
-	long long int	max;
-	
-} t_pushswap;
+}	t_pushswap;
 
 /*HANDLE*/
 
@@ -48,6 +55,7 @@ t_stack	*ft_new_node(int value);
 void	ft_add_back(t_stack **stack, t_stack *node);
 void	ft_add_front(t_stack **stack, t_stack *node);
 int		ft_stack_size(t_stack *stack);
+int		ft_get_position(t_stack *stack, t_stack *target);
 
 /*MOVES*/
 
@@ -107,8 +115,8 @@ int		ft_duplicate_args(char **split, int pos_f);
 char	*ft_join_args(int argc, char *argv[]);
 
 //ft_free.c
-void 	ft_free_split(char **split);
 void	ft_free_stack(t_stack *head);
+void	ft_free_stacks(t_stack *stack_a, t_stack *stack_b);
 
 //ft_isordered.c
 int		ft_isordered(t_stack *stack);
@@ -133,9 +141,8 @@ int		ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b);
 /*BONUS*/
 
 //checker.c
-char	*ft_clean_sentence(char *str);
-int		ft_execute_bonus_moves(char **buffer, int index, t_stack **stack_a, t_stack **stack_b);
-int		ft_execute_intermediate_moves(char *buffer, t_stack **stack_a, t_stack **stack_b);
-void	ft_init_data(t_pushswap **data, int argc, char *argv[]);
+int		ft_execute_moves(char *line, t_stack **stack_a, t_stack **stack_b);
+int		ft_intermediate_moves(char *line, t_stack **stack_a, t_stack **stack_b);
+void	ft_init_data(t_pushswap *data, int argc, char *argv[]);
 
 #endif

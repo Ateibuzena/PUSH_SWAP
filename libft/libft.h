@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:13:53 by azubieta          #+#    #+#             */
-/*   Updated: 2025/06/30 23:05:24 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:21:10 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_split
 typedef struct s_list
 {
 	void				*content;
-	struct s_list	*next;
+	struct s_list		*next;
 }	t_list;
 
 # endif
@@ -77,9 +77,9 @@ typedef struct Itoa
 
 typedef struct s_format
 {
-    char				id;
-    int					(*func)(va_list args);
-    struct s_format		*next;
+	char				id;
+	int					(*func)(va_list args);
+	struct s_format		*next;
 }	t_format;
 
 # endif
@@ -99,9 +99,8 @@ typedef struct s_fdnode
 
 // Buffer to get_next_line
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 45
+#  define BUFFER_SIZE 2
 # endif
-
 
 /*SRC/D_ASCII/*/
 int			ft_isalpha(int c);
@@ -126,15 +125,15 @@ char		*ft_strjoin_getnextline(char *s1, char *s2);
 char		*ft_free(char *ptr);
 
 /*SRC/D_LISTS/*/
-t_list	*ft_lstnew(void *ptr);
+t_list		*ft_lstnew(void *ptr);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*SRC/D_MEMORY/*/
 void		*ft_memset(void *array, int value, t_size len);
@@ -147,18 +146,18 @@ void		*ft_calloc(t_size count, t_size size);
 
 /*SRC/D_PRINTF/*/
 int			ft_printf(const char *format, ...);
-int         ft_init_handlers(t_format **head);
-int         ft_add_handler(t_format **lst, char id, int (*func)(va_list));
+int			ft_init_handlers(t_format **head);
+int			ft_add_handler(t_format **lst, char id, int (*func)(va_list));
 void		ft_free_handlers(t_format *list);
 int			ft_call_handler(t_format *formats, char id, va_list args);
-int         ft_putchar_printf(char c);
+int			ft_putchar_printf(char c);
 int			ft_handle_char(va_list args);
-int         ft_putstr_printf(char *s);
+int			ft_putstr_printf(char *s);
 int			ft_handle_string(va_list args);
 int			ft_handle_digits(va_list args);
 int			ft_handle_integer(va_list args);
 int			ft_handle_unsigned(va_list args);
-int         ft_puthex_printf(unsigned long n, int uppercase);
+int			ft_puthex_printf(unsigned long n, int uppercase);
 int			ft_handle_hex_lower(va_list args);
 int			ft_handle_hex_upper(va_list args);
 int			ft_handle_pointer(va_list args);

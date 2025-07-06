@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacks.c                                        :+:      :+:    :+:   */
+/*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 12:24:21 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:46:27 by azubieta         ###   ########.fr       */
+/*   Created: 2025/07/06 10:06:29 by azubieta          #+#    #+#             */
+/*   Updated: 2025/07/06 10:06:51 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,18 @@ void	ft_add_front(t_stack **stack, t_stack *node)
 {
 	node->next = *stack;
 	*stack = node;
+}
+
+int	ft_get_position(t_stack *stack, t_stack *target)
+{
+	int	i = 0;
+
+	while (stack)
+	{
+		if (stack == target)
+			return (i);
+		stack = stack->next;
+		i++;
+	}
+	return (-1);
 }
