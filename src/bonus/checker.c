@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:23:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 21:40:50 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:56:03 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_intermediate_moves(char *line, t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
-void	ft_init_data(t_pushswap *data, int argc, char *argv[])
+int	ft_init_data(t_pushswap *data, int argc, char *argv[])
 {
 	char	**split;
 
@@ -59,36 +59,44 @@ void	ft_init_data(t_pushswap *data, int argc, char *argv[])
 	{
 		if (ft_strlen_double(split) == 0)
 			ft_freedouble(split);
-		return (ft_putstr_fd("Error\n", 2));
+		return (ft_putstr_fd("Error\n", 2), 0);
 	}
 	ft_init_value(&(data->stack_a), split);
 	ft_freedouble(split);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_pushswap	data;
+	int			size;
 
 	if (argc == 1)
 		return (0);
-	ft_init_data(&data, argc, argv);
+	if (!ft_init_data(&data, argc, argv))
+		return (1);
+	size = ft_stack_size(data.stack_a);
 	while (1)
 	{
 		data.line = get_next_line(0);
 		if (!data.line)
+		{
 			break ;
+		}
 		if (!ft_execute_moves(data.line, &(data.stack_a), &(data.stack_b)))
 		{
 			free(data.line);
 			ft_free_stacks(data.stack_a, data.stack_b);
+			get_next_line(-1);
 			return (1);
 		}
 		free(data.line);
 	}
-	if (ft_isordered(data.stack_a))
+	if (ft_isordered(data.stack_a) && ft_stack_size(data.stack_a) == size)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
 	ft_free_stacks(data.stack_a, data.stack_b);
+	get_next_line(-1);
 	return (0);
 }

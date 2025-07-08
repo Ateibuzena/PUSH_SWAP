@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:22:29 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/06 09:54:16 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:06:32 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,6 @@ int		ft_prepare_stacks(t_stack **stack_a, t_stack **stack_b);
 //checker.c
 int		ft_execute_moves(char *line, t_stack **stack_a, t_stack **stack_b);
 int		ft_intermediate_moves(char *line, t_stack **stack_a, t_stack **stack_b);
-void	ft_init_data(t_pushswap *data, int argc, char *argv[]);
+int		ft_init_data(t_pushswap *data, int argc, char *argv[]);
 
 #endif

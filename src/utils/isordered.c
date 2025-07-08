@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isordered.c                                     :+:      :+:    :+:   */
+/*   isordered.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:46:11 by azubieta          #+#    #+#             */
-/*   Updated: 2024/10/23 18:47:08 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:50:04 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_isordered(t_stack *stack)
 	int		n;
 	t_stack	*sublist;
 
+	if (!stack)
+		return (0);
 	sublist = stack;
 	while (sublist->next)
 	{
