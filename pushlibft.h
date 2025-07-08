@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:22:29 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/07 17:06:32 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:26:27 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_pushswap
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
+	int				size;
 	char			*line;
 }	t_pushswap;
 

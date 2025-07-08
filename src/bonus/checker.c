@@ -6,7 +6,7 @@
 /*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:23:26 by azubieta          #+#    #+#             */
-/*   Updated: 2025/07/08 12:56:03 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:27:31 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,34 +69,28 @@ int	ft_init_data(t_pushswap *data, int argc, char *argv[])
 int	main(int argc, char **argv)
 {
 	t_pushswap	data;
-	int			size;
 
 	if (argc == 1)
 		return (0);
 	if (!ft_init_data(&data, argc, argv))
 		return (1);
-	size = ft_stack_size(data.stack_a);
+	data.size = ft_stack_size(data.stack_a);
 	while (1)
 	{
 		data.line = get_next_line(0);
 		if (!data.line)
-		{
 			break ;
-		}
 		if (!ft_execute_moves(data.line, &(data.stack_a), &(data.stack_b)))
 		{
-			free(data.line);
 			ft_free_stacks(data.stack_a, data.stack_b);
-			get_next_line(-1);
-			return (1);
+			return (free(data.line), get_next_line(-1), 1);
 		}
 		free(data.line);
 	}
-	if (ft_isordered(data.stack_a) && ft_stack_size(data.stack_a) == size)
+	if (ft_isordered(data.stack_a) && ft_stack_size(data.stack_a) == data.size)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
 	ft_free_stacks(data.stack_a, data.stack_b);
-	get_next_line(-1);
-	return (0);
+	return (get_next_line(-1), 0);
 }
